@@ -1,5 +1,10 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Box from './component/Box';
+
+
+//1.박스2개 -> title(you, computer), image, result(win, draw, lose)
+//2.버튼 3개 -> onClick => 해당 choice 화면에 보여주기.
 
 const choice = {
   rock: {
@@ -11,7 +16,7 @@ const choice = {
     image: "https://th.bing.com/th/id/R.01b8b514046794f229bcb1b1b80e896f?rik=bL8%2frVFN26Wumg&riu=http%3a%2f%2ffile3.instiz.net%2fdata%2fcached_img%2fupload%2f2023%2f02%2f24%2f0%2f300294919ead99c794acdb9955730d0e.jpg&ehk=yMSiYelavdGEcwmWqq1bjrg5Pp70ED8F%2f%2fv6WHkLsls%3d&risl=&pid=ImgRaw&r=0",
   },
   paper: {
-    name: "paper",
+    name: "Paper",
     image: "https://cdn.crowdpic.net/detail-thumb/thumb_d_BD030450290C2E8F769E16352FDFF090.jpg",
   },
 }
@@ -24,9 +29,22 @@ const choice = {
 //Dynamic한 State 값에는 guard 코드가 필요할 가능성 존재. (&&연산자)
 
 function App() {
-  return (
-    <div>
 
+  const [userSelect, setUserSelect] = useState(null)
+
+  const GameButtonHandler = (userChoice) => {
+    setUserSelect(choice[userChoice])
+  }
+
+  return (
+    <div className='root'>
+      <Box title='you' item={userSelect} />
+      {/* <Box /> */}
+      <div className='buttonBox'>
+        <button onClick={() => GameButtonHandler("scissors")}>가위</button>
+        <button onClick={() => GameButtonHandler("rock")}>바위</button>
+        <button onClick={() => GameButtonHandler("paper")}>보</button>
+      </div>
     </div>
   );
 }
