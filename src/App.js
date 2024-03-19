@@ -2,9 +2,14 @@ import { useState } from 'react';
 import './App.css';
 import Box from './component/Box';
 
-
+//0319
 //1.박스2개 -> title(you, computer), image, result(win, draw, lose)
 //2.버튼 3개 -> onClick => 해당 choice 화면에 보여주기.
+
+//0320
+//1. 랜덤으로 computer의 "가위바위보" 생성.
+//2. user 기준으로 win, lose, tie 결과값 도출
+//*3. user, computer 따로 결과값 나타내기.
 
 const choice = {
   rock: {
@@ -21,26 +26,51 @@ const choice = {
   },
 }
 
-//그냥 일반 function() 형식으로 정의하면, React는 렌더링할때 함수를 실행시켜버림.
-//따라서, 이를 방지하기 위해 콜백함수 형식 ()=>function() 으로 정의해주면됨.
-
-//UI를 반응하게 하고싶다 -> state 사용.
-
-//Dynamic한 State 값에는 guard 코드가 필요할 가능성 존재. (&&연산자)
 
 function App() {
 
   const [userSelect, setUserSelect] = useState(null)
+  const [computerSelect, setComputerSelect] = useState(null)
+  const [userResult, setUserResult] = useState(null)
+  const [computerResult, setComputerResult] = useState(null)
 
   const GameButtonHandler = (userChoice) => {
     setUserSelect(choice[userChoice])
+
+    const choiceArray = Object.keys(choice)
+    const idx = parseInt(Math.random() * choiceArray.length)
+
+    setComputerSelect(choice[choiceArray[idx]])
+
+    makeUserResult(userSelect, computerSelect)
+    makeComputerResult(userResult)
   }
+
+  const makeUserResult = (user, computer) => {
+    if (user === computer) {
+      setUserResult("tie")
+    }
+    else if (user.name == 'Rock') computer.name == 'Scissors' ? setUserResult("win") : setUserResult("lose");
+    else if (user.name == 'Scissors') computer.name == 'Paper' ? setUserResult("win") : setUserResult("lose");
+    else if (user.name == 'Paper') computer.name == 'Rock' ? setUserResult("win") : setUserResult("lose");
+
+    console.log(userResult)
+  }
+
+  const makeComputerResult = (userResult) => {
+    if (userResult == 'tie') setComputerResult('tie')
+    else if (userResult == 'win') setComputerResult('lose')
+    else setComputerResult('win')
+  }
+
 
   return (
     <div className='root'>
-      <Box title='you' item={userSelect} />
-      {/* <Box /> */}
-      <div className='buttonBox'>
+      <div className='boxContainer'>
+        <Box title='you' item={userSelect} result={userResult} />
+        <Box title='computer' item={computerSelect} result={computerResult} />
+      </div>
+      <div className='buttonContainer'>
         <button onClick={() => GameButtonHandler("scissors")}>가위</button>
         <button onClick={() => GameButtonHandler("rock")}>바위</button>
         <button onClick={() => GameButtonHandler("paper")}>보</button>

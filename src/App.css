@@ -6,7 +6,7 @@
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
 }
-.boxContainer{
+.boxMain{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -17,11 +17,18 @@
   border-radius: 20px;
   font-size: 20px;
 }
-.buttonBox{
+.buttonContainer{
   display: flex;
   margin-top: 20px;
 }
+
 .image{
   width: 300px;
   height: 220px;
+}
+
+.boxContainer{
+  display: flex;
+  width: 1150px;
+  justify-content: space-around;
 }
