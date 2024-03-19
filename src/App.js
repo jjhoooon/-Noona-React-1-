@@ -31,36 +31,57 @@ function App() {
 
   const [userSelect, setUserSelect] = useState(null)
   const [computerSelect, setComputerSelect] = useState(null)
-  const [userResult, setUserResult] = useState(null)
-  const [computerResult, setComputerResult] = useState(null)
+  const [userResult, setUserResult] = useState("")
+  const [computerResult, setComputerResult] = useState("")
 
-  const GameButtonHandler = (userChoice) => {
+  const Play = (userChoice) => {
     setUserSelect(choice[userChoice])
 
-    const choiceArray = Object.keys(choice)
-    const idx = parseInt(Math.random() * choiceArray.length)
+    let computerChoice = randomChoice()
 
-    setComputerSelect(choice[choiceArray[idx]])
+    setComputerSelect(computerChoice)
 
-    makeUserResult(userSelect, computerSelect)
-    makeComputerResult(userResult)
+    if (userSelect && computerSelect) {
+      setUserResult(makeUserResult(userSelect, computerSelect))
+      setComputerResult(makeComputerResult(userSelect, computerSelect))
+    }
   }
+
 
   const makeUserResult = (user, computer) => {
-    if (user === computer) {
-      setUserResult("tie")
-    }
-    else if (user.name == 'Rock') computer.name == 'Scissors' ? setUserResult("win") : setUserResult("lose");
-    else if (user.name == 'Scissors') computer.name == 'Paper' ? setUserResult("win") : setUserResult("lose");
-    else if (user.name == 'Paper') computer.name == 'Rock' ? setUserResult("win") : setUserResult("lose");
 
-    console.log(userResult)
+    console.log("user : ", user, "computer: ", computer)
+
+    if (user.name == computer.name) {
+      return "tie"
+    }
+    else if (user.name == 'Rock')
+      return computer.name == 'Scissors' ? "win" : "lose"
+    else if (user.name == 'Scissors')
+      return computer.name == 'Paper' ? "win" : "lose"
+    else if (user.name == 'Paper')
+      return computer.name == 'Rock' ? "win" : "lose"
   }
 
-  const makeComputerResult = (userResult) => {
-    if (userResult == 'tie') setComputerResult('tie')
-    else if (userResult == 'win') setComputerResult('lose')
-    else setComputerResult('win')
+  const makeComputerResult = (user, computer) => {
+    if (user.name == computer.name) {
+      return "tie"
+    }
+    else if (computer.name == 'Rock')
+      return user.name == 'Scissors' ? "win" : "lose"
+    else if (computer.name == 'Scissors')
+      return user.name == 'Paper' ? "win" : "lose"
+    else if (computer.name == 'Paper')
+      return user.name == 'Rock' ? "win" : "lose"
+  }
+
+  const randomChoice = () => {
+    let itemArray = Object.keys(choice) // itemArray = [rock, scissors, paper]
+    let randomItem = itemArray[Math.floor(Math.random() * itemArray.length)]
+    console.log(randomItem)
+    let final = choice[randomItem]
+
+    return final
   }
 
 
@@ -71,9 +92,9 @@ function App() {
         <Box title='computer' item={computerSelect} result={computerResult} />
       </div>
       <div className='buttonContainer'>
-        <button onClick={() => GameButtonHandler("scissors")}>가위</button>
-        <button onClick={() => GameButtonHandler("rock")}>바위</button>
-        <button onClick={() => GameButtonHandler("paper")}>보</button>
+        <button onClick={() => Play("scissors")}>가위</button>
+        <button onClick={() => Play("rock")}>바위</button>
+        <button onClick={() => Play("paper")}>보</button>
       </div>
     </div>
   );

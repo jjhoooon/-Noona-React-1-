@@ -5,7 +5,7 @@ const Box = (props) => {
     <div className='boxMain'>
       <div>{props.title}</div>
       <img className='image' src={props.item && props.item.image} />
-      <div>{props.result}</div>
+      <div>{props.item && props.result}</div>
     </div>
   )
 }
