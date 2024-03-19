@@ -41,16 +41,12 @@ function App() {
 
     setComputerSelect(computerChoice)
 
-    if (userSelect && computerSelect) {
-      setUserResult(makeUserResult(userSelect, computerSelect))
-      setComputerResult(makeComputerResult(userSelect, computerSelect))
-    }
+    setUserResult(makeUserResult(choice[userChoice], computerChoice))
+    setComputerResult(makeComputerResult(choice[userChoice], computerChoice))
   }
 
 
   const makeUserResult = (user, computer) => {
-
-    console.log("user : ", user, "computer: ", computer)
 
     if (user.name == computer.name) {
       return "tie"
