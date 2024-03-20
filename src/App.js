@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import Box from './component/Box';
 
+
 //0319
 //1.박스2개 -> title(you, computer), image, result(win, draw, lose)
 //2.버튼 3개 -> onClick => 해당 choice 화면에 보여주기.
@@ -24,13 +25,17 @@ const choice = {
     name: "Paper",
     image: "https://cdn.crowdpic.net/detail-thumb/thumb_d_BD030450290C2E8F769E16352FDFF090.jpg",
   },
+  default: {
+    name: "Ready",
+    image: "/ready.png"
+  }
 }
 
 
 function App() {
 
-  const [userSelect, setUserSelect] = useState(null)
-  const [computerSelect, setComputerSelect] = useState(null)
+  const [userSelect, setUserSelect] = useState(choice.default)
+  const [computerSelect, setComputerSelect] = useState(choice.default)
   const [userResult, setUserResult] = useState("")
   const [computerResult, setComputerResult] = useState("")
 
