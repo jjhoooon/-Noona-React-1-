@@ -78,13 +78,12 @@ function App() {
 
   const randomChoice = () => {
     let itemArray = Object.keys(choice) // itemArray = [rock, scissors, paper]
-    let randomItem = itemArray[Math.floor(Math.random() * itemArray.length)]
+    let randomItem = itemArray[Math.floor(Math.random() * (itemArray.length - 1))]
     console.log(randomItem)
     let final = choice[randomItem]
 
     return final
   }
-
 
   return (
     <div className='root'>
