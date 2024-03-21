@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import './App.css';
 import Box from './component/Box';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHandScissors } from '@fortawesome/free-regular-svg-icons';
+import { faHandBackFist } from '@fortawesome/free-regular-svg-icons';
+import { faHand } from '@fortawesome/free-regular-svg-icons';
+
 
 
 //0319
@@ -87,14 +92,22 @@ function App() {
 
   return (
     <div className='root'>
-      <div className='boxContainer'>
-        <Box title='you' item={userSelect} result={userResult} />
-        <Box title='computer' item={computerSelect} result={computerResult} />
-      </div>
-      <div className='buttonContainer'>
-        <button onClick={() => Play("scissors")}>가위</button>
-        <button onClick={() => Play("rock")}>바위</button>
-        <button onClick={() => Play("paper")}>보</button>
+      <div className='gameContainer'>
+        <div className='boxContainer'>
+          <Box title='you' item={userSelect} result={userResult} />
+          <Box title='computer' item={computerSelect} result={computerResult} />
+        </div>
+        <div className='buttonContainer'>
+          <button className='scissors' onClick={() => Play("scissors")}>
+            <FontAwesomeIcon icon={faHandScissors} size="6x" rotation={90} />
+          </button>
+          <button className='rock' onClick={() => Play("rock")}>
+            <FontAwesomeIcon icon={faHandBackFist} size="6x" />
+          </button>
+          <button className='paper' onClick={() => Play("paper")}>
+            <FontAwesomeIcon icon={faHand} size="6x" />
+          </button>
+        </div>
       </div>
     </div>
   );
