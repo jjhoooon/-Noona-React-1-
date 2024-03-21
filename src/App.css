@@ -24,14 +24,29 @@
   justify-content: space-around;
   align-items: center;
   width: 700px;
-  height: 600px;
+  height: 580px;
   margin: 0 40px;
+  padding-bottom: 20px;
   border: 5px solid rgb(231, 185, 243);
   border-radius: 20px;
   font-size: 20px;
   background-image: url("https://th.bing.com/th/id/OIG4.leRsijX7bFas_1s4WlFx?w=1024&h=1024&rs=1&pid=ImgDetMain");
   background-position: center;
   background-size: 100% auto;
+}
+
+.boxTitle {
+  display: inline-block;
+  width: 300px;
+  height: auto;
+  text-align: center;
+  font-family: fantasy;
+  font-size: 40px;
+  color: #333333;
+  background: linear-gradient(to right, #fbcac9, #8ca6ce);
+  border: 3px solid #fbdfdf;
+  border-radius: 30px;
+  user-select: none;
 }
 
 .boxMain img {
@@ -45,6 +60,9 @@
 .buttonContainer {
   display: flex;
   margin-top: 40px;
+  background: linear-gradient(to right, #fbcac9, #8ca6ce);
+  border-radius: 30px;
+  border: 6px solid #fbdfdf;
 }
 
 .buttonContainer button.scissors {
@@ -76,13 +94,22 @@
   border: none;
 }
 
-.image {
-  width: 300px;
-  height: 220px;
-}
-
 .boxContainer {
   display: flex;
   width: 1150px;
   justify-content: space-around;
+}
+
+.boxResult {
+  display: inline-block;
+  width: 150px;
+  height: auto;
+  text-align: center;
+  font-family: fantasy;
+  font-size: 40px;
+  color: #333333;
+  background: linear-gradient(to right, #fbcac9, #8ca6ce);
+  border-radius: 30px;
+  border: 3px solid #fbdfdf;
+  user-select: none;
 }
