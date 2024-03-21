@@ -1,2 +1,2 @@
-- 첫번째 프로젝트: 가위바위보 게임 5강~6강
-- netlify_domain :  https://0320--monumental-toffee-8cceba.netlify.app/
+- 첫번째 프로젝트: 가위바위보 게임을 클래스 컴포넌트로 바꿔보기
+- netlify_domain :  https://0321--sage-rugelach-1d1d33.netlify.app/
